@@ -35,6 +35,7 @@ export async function fetchXnfts(
     },
   ]);
 
+  console.log("yaha tak pohoch gaya");
   // HACK to get ONE xNFT installed for everyone
   xnftInstalls.push({
     // @ts-ignore
@@ -100,6 +101,7 @@ export async function fetchXnfts(
       },
     });
   }
+  console.log("Yaha tak nahi pohoch paaya");
 
   if (xnftInstalls.length === 0) {
     return [];

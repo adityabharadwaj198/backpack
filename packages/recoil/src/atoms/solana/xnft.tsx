@@ -138,19 +138,41 @@ export const xnfts = atomFamily<
           new PublicKey(publicKey),
           isDropzoneWallet
         );
-        return xnfts.map((xnft) => {
-          return {
-            ...xnft,
-            url: xnft.xnft.xnft.manifest.entrypoints.default.web,
-            splashUrls: xnft.xnft.xnft.manifest.splash ?? {},
-            iconUrl: externalResourceUri(xnft.metadata.image),
-            activeWallet: _activeWallets[Blockchain.SOLANA],
-            activeWallets: _activeWallets,
-            connectionUrl: _connectionUrls[Blockchain.SOLANA],
-            connectionUrls: _connectionUrls,
-            title: xnft.metadata.name,
-          };
-        });
+
+        return [
+          {
+            url: "xnft.gg",
+            iconUrl: externalResourceUri("https://www.xnft.gg/logo.svg"),
+            title: "xNFT.gg",
+          },
+          ...xnfts.map((xnft) => {
+            return {
+              ...xnft,
+              url: xnft.xnft.xnft.manifest.entrypoints.default.web,
+              splashUrls: xnft.xnft.xnft.manifest.splash ?? {},
+              iconUrl: externalResourceUri(xnft.metadata.image),
+              activeWallet: _activeWallets[Blockchain.SOLANA],
+              activeWallets: _activeWallets,
+              connectionUrl: _connectionUrls[Blockchain.SOLANA],
+              connectionUrls: _connectionUrls,
+              title: xnft.metadata.name,
+            };
+          }),
+        ];
+
+        // return xnfts.map((xnft) => {
+        //   return {
+        //     ...xnft,
+        //     url: xnft.xnft.xnft.manifest.entrypoints.default.web,
+        //     splashUrls: xnft.xnft.xnft.manifest.splash ?? {},
+        //     iconUrl: externalResourceUri(xnft.metadata.image),
+        //     activeWallet: _activeWallets[Blockchain.SOLANA],
+        //     activeWallets: _activeWallets,
+        //     connectionUrl: _connectionUrls[Blockchain.SOLANA],
+        //     connectionUrls: _connectionUrls,
+        //     title: xnft.metadata.name,
+        //   };
+        // });
       },
   }),
 });
